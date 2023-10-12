@@ -42,7 +42,7 @@ class User(AbstractUser):
 class Profile(models.Model):
     user = models.OneToOneField(User, models.CASCADE)
     about = models.TextField(blank=True, null=True)
-    invite_code = models.CharField(max_length=8, unique=True)
+    invite_code = models.CharField(max_length=8, unique=True,help_text='auto add active',null=True,blank=True)
 
     def __str__(self):
         return str(self.user)
@@ -125,7 +125,6 @@ class VerifyCode(models.Model):
             pass
             # return send_phone()
         if self.is_email and settings.ENABLE_SENDING_EMAIL:
-            pass
             send_email(
                 email=self.value,
                 message=_(f"Doğrulama kodunuz: {self.code}. \nCvGezgini®"),

@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'django_filters',
-    'drf_spectacular',
+    'drf_yasg',
     'cvgezgini.apps.accounts',
     'cvgezgini.apps.core'
 ]
@@ -130,7 +130,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+import os
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
 
 MEDIA_ROOT = BASE_DIR / "media"
